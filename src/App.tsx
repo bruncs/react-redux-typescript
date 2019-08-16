@@ -1,5 +1,14 @@
-import React from "react";
+import React from 'react';
 
-const App: React.FC = () => <div className="App" />;
+import { Provider } from 'react-redux';
+import store from './store';
+
+import LoginForm from './components/LoginForm';
+
+const App: React.FC = () => (
+  <Provider store={store}>
+    <LoginForm />
+  </Provider>
+);
 
 export default App;
