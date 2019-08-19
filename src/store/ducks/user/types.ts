@@ -11,9 +11,10 @@ export enum UserTypes {
  * Data Types
  */
 export interface User {
-  id: string;
+  id: number;
   name: string;
   token: string;
+  avatar?: string;
 }
 
 /**
