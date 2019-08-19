@@ -3,8 +3,9 @@ import { AuthState, AuthTypes } from './types';
 
 const INITIAL_STATE: AuthState = {
   data: {
-    username: '',
-    password: '',
+    id: NaN,
+    name: '',
+    token: '',
   },
   error: false,
   loading: false,
@@ -13,7 +14,7 @@ const INITIAL_STATE: AuthState = {
 const reducer: Reducer<AuthState> = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case AuthTypes.LOGIN_REQUEST:
-      return { ...state, loading: true, data: action.payload };
+      return { ...state, loading: true };
     case AuthTypes.LOGIN_SUCCESS:
       return { ...state, loading: false, data: action.payload.data };
     case AuthTypes.LOGIN_FAILURE:
@@ -21,7 +22,16 @@ const reducer: Reducer<AuthState> = (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         error: true,
-        data: {},
+      };
+    case AuthTypes.LOGOUT_REQUEST:
+      return state;
+    case AuthTypes.LOGOUT_SUCCESS:
+      return INITIAL_STATE;
+    case AuthTypes.LOGOUT_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: true,
       };
     default:
       return state;
