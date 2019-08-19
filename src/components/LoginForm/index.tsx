@@ -10,15 +10,11 @@ interface State {
   credentials: Credentials;
 }
 
-interface StateProps {
-  credentials: Credentials;
-}
-
 interface DispatchProps {
   loginRequest(data: Credentials): void;
 }
 
-type Props = StateProps & DispatchProps;
+type Props = DispatchProps;
 
 class LoginForm extends Component<Props, State> {
   constructor(props: Props) {
@@ -60,9 +56,7 @@ class LoginForm extends Component<Props, State> {
   }
 }
 
-const mapStateToProps = (state: ApplicationState) => ({
-  credentials: state.auth.data,
-});
+const mapStateToProps = (state: ApplicationState) => ({ });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(AuthActions, dispatch);
 
