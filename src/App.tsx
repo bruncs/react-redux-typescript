@@ -1,13 +1,15 @@
 import React from 'react';
-
 import { Provider } from 'react-redux';
-import store from './store';
+import { ConnectedRouter } from 'connected-react-router';
 
-import LoginForm from './components/LoginForm';
+import store, { history } from './store';
+import Routes from './routes';
 
 const App: React.FC = () => (
   <Provider store={store}>
-    <LoginForm />
+    <ConnectedRouter history={history}>
+      <Routes />
+    </ConnectedRouter>
   </Provider>
 );
 
